@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Juliana & Fernando</title>
+<meta name="description" content="Juliana & Fernando are getting married. 25 September 2027.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&family=Cormorant+Garamond:wght@300;400;500&family=Rouge+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f7f7f5; --ink:#333333; --soft:#6d6d68; --gold:#a89a64; --line:#e3e1d8; --card:#fbfbf9;
+  --serif:'Cormorant Garamond',Georgia,serif; --script:'Rouge Script','Snell Roundhand',cursive; --hand:'Caveat',cursive;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:19px;line-height:1.6;overflow-x:hidden}
+a{color:inherit}
+.caps{text-transform:uppercase;letter-spacing:.22em}
+.doodle{fill:none;stroke:var(--ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;filter:url(#wobble)}
+.doodle .gold,.gold-stroke{stroke:var(--gold)}
+svg.icon{width:56px;height:56px;display:block}
+img.pic{display:block;object-fit:contain;filter:invert(.2);user-select:none;-webkit-user-drag:none}
+img.icon{width:80px;height:80px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:50;background:rgba(247,247,245,.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 20px}
+.brand{font-family:var(--script);font-size:34px;line-height:1;text-decoration:none}
+.links{display:flex;gap:26px;align-items:center}
+.links a{font-size:14px;text-transform:uppercase;letter-spacing:.2em;text-decoration:none;color:var(--soft);transition:color .2s}
+.links a:hover{color:var(--ink)}
+.lang{border:1px solid var(--gold);background:none;font:inherit;font-size:13px;letter-spacing:.2em;padding:4px 12px;border-radius:99px;cursor:pointer;color:var(--ink)}
+.lang:hover{background:var(--gold);color:#fff}
+.burger{display:none;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{display:block;width:24px;height:1.5px;background:var(--ink);margin:6px 0}
+@media(max-width:1080px){
+  .burger{display:block}
+  .links{position:absolute;top:100%;left:0;right:0;background:var(--bg);flex-direction:column;gap:0;border-bottom:1px solid var(--line);display:none;padding:8px 0 16px}
+  .links.open{display:flex}
+  .links a{padding:10px}
+}
+
+/* SECTIONS */
+section{padding:80px 22px;position:relative}
+.alt{background:var(--card);border-block:1px solid var(--line)}
+.wrap{max-width:820px;margin:auto}
+.center{text-align:center}
+h2{font-family:var(--script);font-weight:400;font-size:clamp(46px,8.5vw,78px);line-height:1;margin-bottom:6px;transform:rotate(-3deg)}
+.kicker{font-size:15px;color:var(--soft);margin-bottom:46px}
+.squiggle{display:block;margin:14px auto 34px;width:150px;height:14px}
+.note{font-family:var(--hand);font-size:25px;color:var(--gold);transform:rotate(-2deg);display:inline-block}
+p+p{margin-top:1em}
+
+/* HERO */
+#home{min-height:calc(100svh - 58px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:22px 22px 26px;overflow:hidden}
+.names{font-family:var(--script);font-weight:400;font-size:clamp(60px,min(20vw,19svh),230px);line-height:.78;transform:rotate(-6deg);margin:10px 0 0;text-align:left;display:inline-block}
+.names span{display:block}
+.names .amp{font-size:.42em;margin-left:46%;line-height:.9}
+.names .n2{margin-left:6%}
+.hero-icon{width:clamp(90px,min(6vw,6svh),260px);height:auto;margin:clamp(14px,3svh,30px) auto clamp(18px,4svh,40px)}
+.invite{font-size:clamp(15px,2.6vw,21px);max-width:520px}
+.date{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:clamp(10px,2.4vw,26px);font-size:clamp(18px,4vw,45px);letter-spacing:.28em;margin:0 0 14px;font-weight:300}
+.date i{width:1.5px;height:1.1em;background:var(--gold);display:block}
+.place{font-size:clamp(15px,2.4vw,20px);margin-bottom:6px}
+.count{display:flex;gap:clamp(10px,3vw,30px);justify-content:center;margin:34px 0 26px}
+.count div{min-width:70px}
+.count b{display:block;font-weight:300;font-size:clamp(36px,9vw,72px);line-height:1;font-variant-numeric:tabular-nums}
+.count small{font-size:12px;letter-spacing:.25em;text-transform:uppercase;color:var(--soft)}
+.btn{display:inline-block;font:inherit;font-size:14px;text-transform:uppercase;letter-spacing:.22em;text-decoration:none;color:var(--ink);background:none;border:1px solid var(--ink);padding:13px 28px;cursor:pointer;transition:all .25s;border-radius:2px}
+.btn:hover{background:var(--ink);color:var(--bg)}
+.btn.gold{border-color:var(--gold)}.btn.gold:hover{background:var(--gold);border-color:var(--gold)}
+.linklike{background:none;border:0;font:inherit;font-size:14px;letter-spacing:.18em;text-transform:uppercase;color:var(--soft);text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:5px;cursor:pointer}
+.linklike:hover{color:var(--ink)}
+.float{position:absolute;opacity:.55;pointer-events:none}
+
+/* SCHEDULE */
+.steps{list-style:none;position:relative;margin-top:10px}
+.steps:before{content:"";position:absolute;left:143px;top:10px;bottom:10px;width:1.5px;background:var(--gold);opacity:.6}
+.steps li{display:grid;grid-template-columns:90px 72px 1fr;gap:0 18px;align-items:center;padding:20px 0;position:relative}
+.steps .t{text-align:right;font-size:15px;letter-spacing:.15em;text-transform:uppercase;color:var(--soft)}
+.steps .ic{background:var(--bg);width:72px;height:72px;display:grid;place-items:center;border-radius:50%;position:relative;z-index:1}
+.steps .ic img{width:72px;height:72px}
+.steps h3{font-weight:500;font-size:26px;letter-spacing:.14em;text-transform:uppercase;line-height:1.2}
+.steps p{color:var(--soft);font-size:18px;margin:0}
+.steps li.party h3{font-family:var(--script);font-weight:400;font-size:64px;letter-spacing:0;text-transform:none;line-height:.9;color:var(--ink)}
+.steps li.party .ic img{animation:sway 3s ease-in-out infinite;transform-origin:50% 60%}
+@keyframes sway{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:560px){
+  .steps:before{left:35px}
+  .steps li{grid-template-columns:72px 1fr;gap:4px 16px;align-items:start}
+  .steps .t{grid-column:2;grid-row:1;text-align:left}
+  .steps .ic{grid-column:1;grid-row:1 / span 2}
+  .steps .txt{grid-column:2}
+}
+
+/* MAP */
+.mapbox{border:1px solid var(--line);padding:10px;background:var(--bg);margin:6px 0 34px;position:relative}
+.mapbox iframe{width:100%;height:400px;border:0;display:block;filter:grayscale(.55) contrast(.95)}
+.tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;margin-top:40px}
+.tip{text-align:center}
+.tip svg{margin:0 auto 8px}
+.tip h4{font-weight:500;font-size:15px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:6px}
+.tip p{color:var(--soft);font-size:17px}
+
+/* COUPLE PHOTO */
+.photo{position:relative;width:min(250px,76vw);margin:0 auto 52px}
+.photo:before{content:"";position:absolute;inset:-11px;border:1px solid var(--gold);border-radius:999px 999px 0 0;pointer-events:none}
+.photo img{display:block;width:100%;aspect-ratio:4/5;object-fit:cover;object-position:57% 30%;border-radius:999px 999px 0 0}
+
+/* FORM */
+form{display:grid;gap:22px;text-align:left}
+label,.lbl{display:block;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--soft);margin-bottom:4px}
+input[type=text],input[type=email],input[type=number],select,textarea{width:100%;font:inherit;font-size:19px;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);padding:8px 2px;border-radius:0;outline:none;transition:border-color .2s}
+input:focus,select:focus,textarea:focus{border-bottom-color:var(--gold)}
+textarea{resize:vertical;min-height:80px;border:1px solid var(--line);padding:10px;background:var(--card)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+@media(max-width:560px){.row{grid-template-columns:1fr}}
+.choice{display:flex;gap:14px;flex-wrap:wrap}
+.choice input{position:absolute;opacity:0}
+.choice span{display:block;border:1px solid var(--ink);padding:12px 22px;cursor:pointer;font-size:15px;letter-spacing:.14em;text-transform:uppercase;transition:all .2s}
+.choice input:checked+span{background:var(--ink);color:var(--bg)}
+.choice input:focus-visible+span{outline:2px solid var(--gold);outline-offset:2px}
+.hp{position:absolute;left:-9999px}
+.msg{padding:18px;border:1px solid var(--gold);text-align:center;display:none;background:var(--card)}
+.msg.show{display:block}
+.msg.err{border-color:#b55}
+.person{border:1px solid var(--line);background:var(--card);padding:20px;display:grid;gap:18px;position:relative}
+.person:before{content:"";position:absolute;left:-1px;top:-1px;width:26px;height:26px;border-top:1.5px solid var(--gold);border-left:1.5px solid var(--gold)}
+.deadline{display:inline-block;border-bottom:1px solid var(--gold)}
+.check{display:flex;align-items:center;gap:14px;cursor:pointer;font-size:15px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin:0}
+.check input{-webkit-appearance:none;appearance:none;width:26px;height:26px;border:1px solid var(--ink);border-radius:2px;display:grid;place-content:center;cursor:pointer;margin:0;flex:none;background:transparent;transition:background .2s}
+.check input:checked{background:var(--ink)}
+.check input:checked:after{content:"";width:7px;height:13px;border:solid var(--bg);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
+.check input:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* MUSIC */
+.spot{margin:30px auto 26px;max-width:560px}
+.spot iframe{width:100%;height:352px;border:0;border-radius:12px}
+.spot-ph{border:1.5px dashed var(--gold);padding:34px 20px;border-radius:6px;color:var(--soft)}
+.vinyl{animation:spin 9s linear infinite;transform-origin:center}
+
+/* FAQ */
+details{border-bottom:1px solid var(--line);padding:4px 0}
+summary{cursor:pointer;list-style:none;padding:16px 0;font-size:16px;text-transform:uppercase;letter-spacing:.18em;display:flex;justify-content:space-between;gap:16px;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";font-size:26px;color:var(--gold);line-height:1;transition:transform .25s}
+details[open] summary:after{transform:rotate(45deg)}
+details p{color:var(--soft);padding:0 0 18px;max-width:640px}
+details p.dress-lead{font-family:var(--script);font-size:clamp(36px,6vw,50px);line-height:1;color:var(--ink);padding:0 0 6px}
+details p.dress-lead + p{margin-top:0}
+
+footer{text-align:center;padding:70px 20px 50px;border-top:1px solid var(--line)}
+.foot-icon{display:block;width:64px;height:auto;margin:0 auto 8px}
+footer .s{font-family:var(--script);font-size:60px;line-height:1}
+footer p{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(--soft);margin-top:10px}
+
+/* REVEAL */
+.js .rv{opacity:0;transform:translateY(22px);transition:opacity .9s ease,transform .9s ease}
+.js .rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<!-- SVG DEFS -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <filter id="wobble"><feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="2.4"/></filter>
+    <symbol id="i-spark" viewBox="0 0 64 64"><path d="M32 4C33 22 42 31 60 32C42 33 33 42 32 60C31 42 22 33 4 32C22 31 31 22 32 4z"/></symbol>
+    <symbol id="i-train" viewBox="0 0 64 64"><rect x="14" y="8" width="36" height="38" rx="8"/><path d="M14 28H50M24 56L20 46M40 56L44 46"/><circle cx="24" cy="37" r="2" class="gold"/><circle cx="40" cy="37" r="2" class="gold"/><path d="M22 18H42" class="gold"/></symbol>
+    <symbol id="i-car" viewBox="0 0 64 64"><path d="M6 40V32L14 20H42L52 32 58 34V44H6Z"/><circle cx="18" cy="46" r="6"/><circle cx="46" cy="46" r="6"/><path d="M20 20L16 32H48" class="gold"/></symbol>
+    <symbol id="i-taxi" viewBox="0 0 64 64"><path d="M6 42V34L14 24H42L52 34 58 36V46H6Z"/><circle cx="18" cy="48" r="6"/><circle cx="46" cy="48" r="6"/><path d="M24 24V18H36V24" class="gold"/></symbol>
+    <symbol id="i-music" viewBox="0 0 64 64"><path d="M24 46V12L52 7V41"/><ellipse cx="17" cy="46" rx="8" ry="5.5"/><ellipse cx="45" cy="41" rx="8" ry="5.5" class="gold"/></symbol>
+    <symbol id="i-bubbles" viewBox="0 0 64 64"><circle cx="20" cy="46" r="5"/><circle cx="38" cy="32" r="8"/><circle cx="26" cy="14" r="3"/><circle cx="48" cy="12" r="4"/><circle cx="50" cy="48" r="3"/></symbol>
+  </defs>
+</svg>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-in">
+    <a class="brand" href="#home">J &amp; F</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span></button>
+    <div class="links" id="links">
+      <a href="#schedule" data-i18n="nav_schedule">Schedule</a>
+      <a href="#getting-there" data-i18n="nav_where">Getting there</a>
+      <a href="#rsvp" data-i18n="nav_rsvp">RSVP</a>
+      <a href="#music" data-i18n="nav_music">Music</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
+      <button class="lang" id="lang" aria-label="Language">ES</button>
+    </div>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home">
+  <svg class="float doodle" style="left:6%;top:14%;width:26px;height:26px" viewBox="0 0 64 64"><use href="#i-spark"/></svg>
+  <svg class="float doodle" style="right:8%;top:30%;width:20px;height:20px" viewBox="0 0 64 64"><use href="#i-spark"/></svg>
+  <svg class="float doodle" style="left:10%;bottom:12%;width:40px;height:40px" viewBox="0 0 64 64"><use href="#i-bubbles"/></svg>
+  <svg class="float doodle" style="right:7%;bottom:18%;width:24px;height:24px" viewBox="0 0 64 64"><use href="#i-spark"/></svg>
+
+  <h1 class="names rv"><span class="n1">Juliana</span><span class="amp">&amp;</span><span class="n2">Fernando</span></h1>
+
+  <img class="pic hero-icon rv" src="icon-wedding-couple.png" alt="">
+
+  <p class="invite caps rv" data-i18n="invite">We would like to invite you to our wedding</p>
+</section>
+
+<!-- DETAILS -->
+<section id="details" class="alt">
+  <div class="wrap center">
+    <figure class="photo rv"><img src="picture.jpg" alt="Juliana and Fernando" decoding="async" onerror="this.closest('.photo').remove()"></figure>
+    <div class="date rv"><span>25</span><i></i><span>09</span><i></i><span>2027</span></div>
+    <p class="place caps rv" data-i18n="place">Valencia · Spain</p>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="wrap center">
+    <h2 class="rv" data-i18n="sch_title">The Plan</h2>
+    <p class="kicker caps rv" data-i18n="sch_sub">The plan, in four acts</p>
+    <ol class="steps" style="text-align:left">
+      <li class="rv">
+        <span class="t">5:00 PM</span>
+        <span class="ic"><img class="pic" src="icon-cocktail.png" width="72" height="72" alt=""></span>
+        <div class="txt"><h3 data-i18n="s1_t">Welcome cocktail</h3><p data-i18n="s1_p">Arrive, grab a drink, hug everyone you haven't seen in too long.</p></div>
+      </li>
+      <li class="rv">
+        <span class="t">6:00 PM</span>
+        <span class="ic"><img class="pic" src="icon-rings.png" width="72" height="72" alt=""></span>
+        <div class="txt"><h3 data-i18n="s2_t">Ceremony</h3><p data-i18n="s2_p">Short and sweet. Tissues optional, but we make no promises.</p></div>
+      </li>
+      <li class="rv">
+        <span class="t">7:30 PM</span>
+        <span class="ic"><img class="pic" src="icon-dinner.png" width="72" height="72" alt=""></span>
+        <div class="txt"><h3 data-i18n="s3_t">Dinner</h3><p data-i18n="s3_p">Great food, a long table.</p></div>
+      </li>
+      <li class="rv party">
+        <span class="t">10:00 PM</span>
+        <span class="ic"><img class="pic" src="icon-party.png" width="72" height="72" alt=""></span>
+        <div class="txt"><h3 data-i18n="s4_t">Party!</h3><p data-i18n="s4_p">The real reason we invited you. Bring comfy shoes.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- GETTING THERE -->
+<section id="getting-there" class="alt">
+  <div class="wrap center">
+    <img class="pic icon rv" src="icon-location.png" width="80" height="80" alt="" style="margin:0 auto 6px">
+    <h2 class="rv" data-i18n="where_title">Getting there</h2>
+    <p class="kicker caps rv" data-i18n="where_sub">Finding us is the easy part</p>
+    <div class="mapbox rv"><iframe id="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map" allowfullscreen></iframe></div>
+    <a class="btn gold rv" id="mapbtn" target="_blank" rel="noopener" data-i18n="open_maps">Open in Google Maps</a>
+    <div class="tips">
+      <div class="tip rv"><svg class="icon doodle" viewBox="0 0 64 64"><use href="#i-train"/></svg><h4 data-i18n="tip1_t">Public transport</h4><p data-i18n="tip1_p">Add nearest station, line and walking time here.</p></div>
+      <div class="tip rv"><svg class="icon doodle" viewBox="0 0 64 64"><use href="#i-car"/></svg><h4 data-i18n="tip2_t">By car</h4><p data-i18n="tip2_p">Add parking info here.</p></div>
+      <div class="tip rv"><svg class="icon doodle" viewBox="0 0 64 64"><use href="#i-taxi"/></svg><h4 data-i18n="tip3_t">Taxi / ride share</h4><p data-i18n="tip3_p">Add the address to show the driver and a rough fare.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+  <div class="wrap">
+    <div class="center">
+      <img class="pic icon rv" src="icon-rsvp.png" width="80" height="80" alt="" style="margin:0 auto 6px">
+      <h2 class="rv" data-i18n="rsvp_title">RSVP</h2>
+      <p class="kicker caps rv"><span data-i18n="rsvp_sub">Please reply by</span> <span class="deadline" id="deadline-txt2"></span></p>
+    </div>
+    <form id="rsvp-form" class="rv" novalidate>
+      <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div>
+        <span class="lbl" data-i18n="f_attend">Will you be there?</span>
+        <div class="choice">
+          <label><input type="radio" name="attending" value="yes" checked><span data-i18n="f_yes">Wouldn't miss it</span></label>
+          <label><input type="radio" name="attending" value="no"><span data-i18n="f_no">Sadly can't make it</span></label>
+        </div>
+      </div>
+      <div class="person">
+        <div><label for="n1" data-i18n="f_name">Your full name</label><input id="n1" type="text" maxlength="80" autocomplete="name"></div>
+        <div id="diet1"><label for="d1" data-i18n="f_diet">Dietary requirements &amp; allergies</label><input id="d1" type="text" maxlength="200" data-i18n-ph="f_diet_ph" placeholder="Vegetarian, gluten-free, nut allergy…"></div>
+      </div>
+      <label class="check" id="plusWrap"><input type="checkbox" id="plusone"><span data-i18n="f_plus">I'm bringing a +1</span></label>
+      <div class="person" id="plusBox" style="display:none">
+        <div><label for="n2" data-i18n="f_plus_name">Full name of your +1</label><input id="n2" type="text" maxlength="80" autocomplete="off"></div>
+        <div><label for="d2" data-i18n="f_diet">Dietary requirements &amp; allergies</label><input id="d2" type="text" maxlength="200" data-i18n-ph="f_diet_ph" placeholder="Vegetarian, gluten-free, nut allergy…"></div>
+      </div>
+      <div class="center"><button class="btn" type="submit" data-i18n="f_send">Send RSVP</button></div>
+      <div class="msg" id="form-msg" role="status"></div>
+    </form>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section id="music" class="alt">
+  <div class="wrap center">
+    <svg class="icon doodle rv" style="margin:0 auto 6px" viewBox="0 0 64 64"><use href="#i-music"/></svg>
+    <h2 class="rv" data-i18n="music_title">The Party Playlist</h2>
+    <p class="kicker caps rv" data-i18n="music_sub">You pick the songs, we bring the dance floor</p>
+    <p class="rv" style="max-width:520px;margin:0 auto" data-i18n="music_p">Add the songs you can't resist to our collaborative Spotify playlist. The best ones will make the DJ's list.</p>
+    <div class="spot rv" id="spot"></div>
+    <a class="btn gold rv" id="spotbtn" target="_blank" rel="noopener" data-i18n="music_btn">Add songs on Spotify</a>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="center">
+      <svg class="icon doodle rv" style="margin:0 auto 6px" viewBox="0 0 64 64"><path d="M22 22A10 10 0 1 1 36 31C33 33 32 35 32 39"/><circle cx="32" cy="50" r="1.6"/></svg>
+      <h2 class="rv" data-i18n="faq_title">Good to know</h2>
+      <p class="kicker caps rv" data-i18n="faq_sub">Questions we'd probably ask too</p>
+    </div>
+    <div class="rv">
+      <details><summary data-i18n="dress_q">What should I wear?</summary><p data-i18n="dress_p">Come as you wish, with a touch of elegance. Think relaxed and polished: flowy dresses, linen, a good shirt or a light blazer. Above all, be comfy, because we'll be dancing all night. And bring something warm for the evening.</p></details>
+      <details><summary data-i18n="q1">Can I bring a plus one?</summary><p data-i18n="a1">Your invitation says who's included. If you're unsure, just ask us!</p></details>
+      <details><summary data-i18n="q2">Are children invited?</summary><p data-i18n="a2">Add your answer here.</p></details>
+      <details><summary data-i18n="q4">What about gifts?</summary><p data-i18n="a4">Having you there is the best gift. If you'd still like to give something, add details here.</p></details>
+      <details><summary data-i18n="q6">What if it rains?</summary><p data-i18n="a6">We have a plan B. We'll let you know if anything changes.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <img class="pic foot-icon" src="icon-car.png" alt="">
+  <div class="s">Juliana &amp; Fernando</div>
+  <p>25 · 09 · 2027</p>
+</footer>
+
+<script>
+/* ========= CONFIG: edit these ========= */
+const CONFIG = {
+  date: '2027-09-25T17:00:00+02:00',          // wedding date & time (placeholder: a Saturday in September 2027)
+  rsvpDeadline: '2027-06-30',                  // RSVP deadline
+  mapsLink: 'https://maps.app.goo.gl/aTtzdVFWWBL95UtFA?g_st=ic', // your Google Maps link (placeholder)
+  mapQuery: 'València, Spain',                 // REPLACE with the venue's name/address so the embedded map shows the pin
+  formEndpoint: 'https://script.google.com/macros/s/AKfycbwVN5NZob-BNzDpPLF9RMAWi4q-HGvCxezl1zTO3HLLxzj6Mg8c5HPYmEXSi7lablAVCQ/exec',                            // paste your Google Apps Script web app URL here (ends in /exec), or a Formspree/Web3Forms URL
+  spotifyPlaylistId: '5F0SO7Imi5hgvjWg7wgaKr', // the ID from open.spotify.com/playlist/<ID>
+  spotifyLink: 'https://open.spotify.com/playlist/5F0SO7Imi5hgvjWg7wgaKr?si=2b83f19bd6314712', // swap for the "Invite collaborators" link so guests can add songs
+  venueName: { en: 'Valencia · Spain', es: 'Valencia · España' }
+};
+
+/* ========= TRANSLATIONS ========= */
+const I18N = {
+en:{
+ nav_schedule:'Schedule',nav_where:'Getting there',nav_rsvp:'RSVP',nav_music:'Music',nav_faq:'FAQ',
+ invite:'We would like to invite you to our wedding',
+ sch_title:'The Plan',sch_sub:'The plan, in four acts',
+ s1_t:'Welcome cocktail',s1_p:"Arrive, grab a drink, hug everyone you haven't seen in too long.",
+ s2_t:'Ceremony',s2_p:'Short and sweet. Tissues optional, but we make no promises.',
+ s3_t:'Dinner',s3_p:'Great food, a long table.',
+ s4_t:'Party!',s4_p:'The real reason we invited you. Bring comfy shoes.',
+ where_title:'Getting there',where_sub:'Finding us is the easy part',open_maps:'Open in Google Maps',
+ tip1_t:'Public transport',tip1_p:'Add nearest station, line and walking time here.',
+ tip2_t:'By car',tip2_p:'Add parking info here.',
+ tip3_t:'Taxi / ride share',tip3_p:'Add the address to show the driver and a rough fare.',
+ dress_q:'What should I wear?',dress_p:"Come as you wish, with a touch of elegance. Think relaxed and polished: flowy dresses, linen, a good shirt or a light blazer. Above all, be comfy, because we'll be dancing all night. And bring something warm for the evening.",
+ rsvp_title:'RSVP',rsvp_sub:'Please reply by',
+ f_name:'Your full name',f_plus:"I'm bringing a +1",f_plus_name:"Full name of your +1",f_attend:'Will you be there?',f_yes:"Wouldn't miss it",f_no:"Sadly can't make it",
+ f_diet:'Dietary requirements & allergies',f_diet_ph:'Vegetarian, gluten-free, nut allergy…',
+ f_send:'Send RSVP',
+ ok_yes:"Yay! We got your RSVP. We can't wait to celebrate with you.",ok_no:"Thank you for letting us know. We'll miss you!",
+ err_req:'Please fill in all the names.',err_send:'Something went wrong. Please try again or write to us directly.',
+ err_demo:'The form is not connected yet (add your form endpoint in CONFIG.formEndpoint).',
+ music_title:'The Party Playlist',music_sub:'You pick the songs, we bring the dance floor',
+ music_p:"Add the songs you can't resist to our collaborative Spotify playlist. The best ones will make the DJ's list.",music_btn:'Add songs on Spotify',
+ music_ph:'The Spotify playlist will appear here once it is connected.',
+ faq_title:'Good to know',faq_sub:"Questions we'd probably ask too",
+ q1:'Can I bring a plus one?',a1:"Yes, you're welcome to bring a +1! We kindly ask you to add them in the RSVP form, including any dietary requirements, so we can count the total number of guests.",
+ q2:'Are children invited?',a2:'Kids are very welcome! Please reach out to us so we can arrange food and anything else they might need.',
+ q4:'What about gifts?',a4:"Having you there is the best gift. If you'd still like to give us something, we'd be touched, but truly, your presence is the only thing we ask for, especially because we know many of you will be travelling to be with us.",
+ q6:'What if it rains?',a6:"We have a plan B. We'll let you know if anything changes.",
+ q7:'Who do I contact with questions?',a7:'Write to us at'
+},
+es:{
+ nav_schedule:'Programa',nav_where:'Cómo llegar',nav_rsvp:'Confirmar',nav_music:'Música',nav_faq:'Preguntas',
+ invite:'Queremos invitarte a nuestra boda',
+ sch_title:'El plan',sch_sub:'El plan, en cuatro actos',
+ s1_t:'Cóctel de bienvenida',s1_p:'Llegas, te sirves algo de beber y abrazas a todos los que hace demasiado que no ves.',
+ s2_t:'Ceremonia',s2_p:'Corta y bonita. Los pañuelos son opcionales, pero no prometemos nada.',
+ s3_t:'Cena',s3_p:'Buena comida, mesa larga.',
+ s4_t:'Fiesta!',s4_p:'La verdadera razón por la que los invitamos. Traigan zapatos cómodos.',
+ where_title:'Cómo llegar',where_sub:'Encontrarnos es lo fácil',open_maps:'Abrir en Google Maps',
+ tip1_t:'Transporte público',tip1_p:'Añade aquí la estación más cercana, la línea y el tiempo a pie.',
+ tip2_t:'En coche',tip2_p:'Añade aquí la información de aparcamiento.',
+ tip3_t:'Taxi / app de transporte',tip3_p:'Añade aquí la dirección para mostrar al conductor y una tarifa aproximada.',
+ dress_q:'¿Qué me pongo?',dress_p:'Vengan como quieran, con un toque de elegancia. Algo relajado pero cuidado: vestidos fluidos, lino, una buena camisa o un blazer ligero. Lo más importante es estar cómodos, porque vamos a bailar toda la noche. Y traigan algo de abrigo para la noche.',
+ rsvp_title:'Confirmar asistencia',rsvp_sub:'Por favor responde antes del',
+ f_name:'Tu nombre completo',f_plus:'Voy con un +1',f_plus_name:'Nombre completo de tu +1',f_attend:'¿Vas a venir?',f_yes:'No me lo pierdo',f_no:'Lamentablemente no puedo',
+ f_diet:'Restricciones alimentarias y alergias',f_diet_ph:'Vegetariano, sin gluten, alergia a los frutos secos…',
+ f_send:'Enviar',
+ ok_yes:'¡Genial! Recibimos tu confirmación. Estamos felices de celebrar con vos.',ok_no:'Gracias por avisarnos. ¡Te vamos a extrañar!',
+ err_req:'Por favor completa todos los nombres.',err_send:'Algo salió mal. Inténtalo de nuevo o escríbenos directamente.',
+ err_demo:'El formulario aún no está conectado (añade tu endpoint en CONFIG.formEndpoint).',
+ music_title:'La playlist de la fiesta',music_sub:'Ustedes eligen las canciones, nosotros ponemos la pista',
+ music_p:'Añade las canciones a las que no puedes resistirte a nuestra playlist colaborativa de Spotify. Las mejores llegarán a la lista del DJ.',music_btn:'Añadir canciones en Spotify',
+ music_ph:'La playlist de Spotify aparecerá aquí cuando esté conectada.',
+ faq_title:'Para tener en cuenta',faq_sub:'Preguntas que seguramente nos haríamos también',
+ q1:'¿Puedo ir acompañado/a?',a1:'¡Sí, puedes venir con un +1! Te pedimos por favor que lo añadas en el formulario de confirmación, indicando también si tiene alguna restricción alimentaria, para que podamos contar el total de invitados.',
+ q2:'¿Se puede ir con niños?',a2:'¡Los niños son muy bienvenidos! Escríbenos para que organicemos la comida y todo lo que puedan necesitar.',
+ q4:'¿Y los regalos?',a4:'Que estés ahí es el mejor regalo. Si aun así quieres regalarnos algo, nos hará mucha ilusión, pero tu presencia es lo único que de verdad te pedimos, sobre todo porque sabemos que muchos tienen que viajar para estar con nosotros.',
+ q6:'¿Y si llueve?',a6:'Tenemos un plan B. Te avisaremos si hay cambios.',
+ q7:'¿A quién escribo si tengo dudas?',a7:'Escríbenos a'
+}};
+
+/* ========= LANGUAGE ========= */
+let lang='en';
+try{ lang = localStorage.getItem('lang') || (navigator.language||'en').slice(0,2); }catch(e){ lang=(navigator.language||'en').slice(0,2); }
+if(!I18N[lang]) lang='en';
+const t = k => (I18N[lang][k] ?? I18N.en[k] ?? k);
+
+function fmtDate(iso){
+  return new Date(iso+'T12:00:00').toLocaleDateString(lang==='es'?'es-ES':'en-GB',{day:'numeric',month:'long',year:'numeric'});
+}
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{ el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ el.placeholder = t(el.dataset.i18nPh); });
+  document.querySelector('.place').textContent = CONFIG.venueName[lang];
+  const dl = fmtDate(CONFIG.rsvpDeadline);
+  document.getElementById('deadline-txt2').textContent = dl;
+  document.getElementById('lang').textContent = lang==='en' ? 'ES' : 'EN';
+  buildSpotify();
+  tick();
+}
+document.getElementById('lang').addEventListener('click',()=>{
+  lang = lang==='en'?'es':'en';
+  try{ localStorage.setItem('lang',lang); }catch(e){}
+  applyLang();
+});
+
+/* ========= NAV ========= */
+const links=document.getElementById('links');
+document.getElementById('burger').addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+
+/* ========= MAP ========= */
+document.getElementById('map').src = 'https://www.google.com/maps?q='+encodeURIComponent(CONFIG.mapQuery)+'&output=embed';
+document.getElementById('mapbtn').href = CONFIG.mapsLink;
+
+/* ========= SPOTIFY ========= */
+function buildSpotify(){
+  const box=document.getElementById('spot');
+  document.getElementById('spotbtn').href = CONFIG.spotifyLink;
+  if(CONFIG.spotifyPlaylistId){
+    if(!box.querySelector('iframe')){
+      box.innerHTML='<iframe src="https://open.spotify.com/embed/playlist/'+CONFIG.spotifyPlaylistId+'?utm_source=generator" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy" title="Spotify playlist"></iframe>';
+    }
+  } else {
+    box.innerHTML='<div class="spot-ph"><svg class="icon doodle vinyl" style="margin:0 auto 10px" viewBox="0 0 64 64"><circle cx="32" cy="32" r="26"/><circle cx="32" cy="32" r="9" class="gold"/><path d="M12 22A22 22 0 0 1 22 12" class="gold"/><circle cx="32" cy="32" r="1.5"/></svg>'+t('music_ph')+'</div>';
+  }
+}
+
+/* ========= RSVP ========= */
+const form=document.getElementById('rsvp-form'), fmsg=document.getElementById('form-msg');
+const plusChk=document.getElementById('plusone'), plusWrap=document.getElementById('plusWrap'), plusBox=document.getElementById('plusBox'), diet1=document.getElementById('diet1');
+const isComing=()=>form.elements['attending'].value==='yes';
+const val=id=>document.getElementById(id).value.trim();
+
+// Declining: just a name. Coming: name + dietary, plus an optional +1 revealed by the checkbox.
+function syncForm(){
+  const coming=isComing();
+  if(!coming) plusChk.checked=false;
+  diet1.style.display=coming?'':'none';
+  plusWrap.style.display=coming?'':'none';
+  plusBox.style.display=(coming&&plusChk.checked)?'':'none';
+}
+form.querySelectorAll('input[name=attending]').forEach(r=>r.addEventListener('change',syncForm));
+plusChk.addEventListener('change',()=>{ syncForm(); if(plusChk.checked) document.getElementById('n2').focus(); });
+syncForm();
+
+function show(text,err){ fmsg.textContent=text; fmsg.className='msg show'+(err?' err':''); fmsg.scrollIntoView({behavior:'smooth',block:'center'}); }
+form.addEventListener('submit',async e=>{
+  e.preventDefault();
+  if(form.elements['_gotcha'].value) return;
+  const coming=isComing();
+  const people=[{name:val('n1'),dietary:coming?val('d1'):''}];
+  if(coming&&plusChk.checked) people.push({name:val('n2'),dietary:val('d2')});
+  if(people.some(p=>!p.name)){ show(t('err_req'),true); return; }
+  if(!CONFIG.formEndpoint){ show(t('err_demo'),true); return; }
+  const payload={attending:coming?'yes':'no', people};
+  const btn=form.querySelector('button[type=submit]'); btn.disabled=true;
+  try{
+    if(/script\.google\.com/.test(CONFIG.formEndpoint)){
+      // Google Apps Script: browsers hide its reply, so we send "no-cors" and assume success
+      await fetch(CONFIG.formEndpoint,{method:'POST',mode:'no-cors',body:new URLSearchParams({payload:JSON.stringify(payload)})});
+    } else {
+      const res=await fetch(CONFIG.formEndpoint,{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(payload)});
+      if(!res.ok) throw new Error('bad');
+    }
+    show(coming?t('ok_yes'):t('ok_no'),false);
+    form.reset(); syncForm();
+  }catch(err){ show(t('err_send'),true); }
+  btn.disabled=false;
+});
+
+/* ========= REVEAL ========= */
+const io=new IntersectionObserver(es=>es.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target);} }),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+applyLang();
+</script>
+</body>
+</html>
