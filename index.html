@@ -101,6 +101,15 @@ p+p{margin-top:1em}
 .mapbox{border:1px solid var(--line);padding:10px;background:var(--bg);margin:6px 0 34px;position:relative}
 .mapbox iframe{width:100%;height:400px;border:0;display:block;filter:grayscale(.55) contrast(.95)}
 .tips{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:26px;margin-top:40px}
+.tips.two{grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;max-width:860px;margin-inline:auto}
+.travel-intro{max-width:620px;margin:34px auto 0;color:var(--soft)}
+.tip-links{margin-top:10px;font-size:16px;line-height:1.9}
+.stay{max-width:640px;margin:56px auto 0;padding:34px 28px;border:1px solid var(--gold);border-radius:2px;background:var(--bg)}
+.stay h3{font-family:var(--script);font-weight:400;font-size:clamp(40px,7vw,56px);line-height:1;margin-bottom:10px}
+.stay p{color:var(--soft)}
+.stay .code{margin:18px 0 22px;color:var(--ink)}
+.stay .code span{display:block;font-size:13px;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
+.stay .code b{display:inline-block;margin-top:6px;padding:6px 18px;border:1px dashed var(--gold);font-weight:500;font-size:21px;letter-spacing:.2em}
 .tip{text-align:center}
 .tip svg{margin:0 auto 8px}
 .tip h4{font-weight:500;font-size:15px;letter-spacing:.22em;text-transform:uppercase;margin-bottom:6px}
@@ -220,6 +229,7 @@ footer p{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(-
     <figure class="photo rv"><img src="picture.jpg" alt="Juliana and Fernando" decoding="async" onerror="this.closest('.photo').remove()"></figure>
     <div class="date rv"><span>11</span><i></i><span>09</span><i></i><span>2027</span></div>
     <p class="place caps rv" data-i18n="place">Spain</p>
+  </div>
 </section>
 
 <!-- SCHEDULE -->
@@ -257,13 +267,20 @@ footer p{font-size:14px;letter-spacing:.2em;text-transform:uppercase;color:var(-
   <div class="wrap center">
     <img class="pic icon rv" src="icon-location.png" width="80" height="80" alt="" style="margin:0 auto 6px">
     <h2 class="rv" data-i18n="where_title">Getting there</h2>
-    <p class="kicker caps rv" data-i18n="where_sub">Finding us is the easy part</p>
+    <p class="kicker caps rv" data-i18n="where_sub">A little trek, but we promise it's worth it</p>
     <div class="mapbox rv"><iframe id="map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map" allowfullscreen></iframe></div>
     <a class="btn gold rv" id="mapbtn" target="_blank" rel="noopener" data-i18n="open_maps">Open in Google Maps</a>
-    <div class="tips">
-      <div class="tip rv"><svg class="icon doodle" viewBox="0 0 64 64"><use href="#i-train"/></svg><h4 data-i18n="tip1_t">Public transport</h4><p data-i18n="tip1_p">Add nearest station, line and walking time here.</p></div>
-      <div class="tip rv"><svg class="icon doodle" viewBox="0 0 64 64"><use href="#i-car"/></svg><h4 data-i18n="tip2_t">By car</h4><p data-i18n="tip2_p">Add parking info here.</p></div>
-      <div class="tip rv"><svg class="icon doodle" viewBox="0 0 64 64"><use href="#i-taxi"/></svg><h4 data-i18n="tip3_t">Taxi / ride share</h4><p data-i18n="tip3_p">Add the address to show the driver and a rough fare.</p></div>
+    <p class="travel-intro rv" data-i18n="travel_intro">The closest airport is Alicante–Elche (ALC), about 35–40 minutes away by car. The closest town is Torrevieja.</p>
+    <div class="tips two">
+      <div class="tip rv"><svg class="icon doodle" viewBox="0 0 64 64"><use href="#i-car"/></svg><h4 data-i18n="tip2_t">Rent a car</h4><p data-i18n="tip2_p">Our top tip. It's the easiest way to get from the airport to the hotel, and handy if you want to explore the area.</p></div>
+      <div class="tip rv"><svg class="icon doodle" viewBox="0 0 64 64"><use href="#i-train"/></svg><h4 data-i18n="tip1_t">Public transport</h4><p data-i18n="tip1_p">Buses only go as far as Torrevieja. From there you'll need a taxi or Uber to the hotel, and the same on the way back.</p>
+        <p class="tip-links"><a class="linklike" id="lnk-tickets" target="_blank" rel="noopener" data-i18n="lnk_tickets">Airport ⇄ Torrevieja bus tickets</a><br><a class="linklike" id="lnk-station" target="_blank" rel="noopener" data-i18n="lnk_station">Torrevieja bus station</a></p></div>
+    </div>
+    <div class="stay rv">
+      <h3 class="script" data-i18n="stay_t">Stay with us</h3>
+      <p data-i18n="stay_p">We recommend staying at the hotel for two nights, the 10th and 11th of September. Book directly on the hotel's website and use the code below to get 10% off your room.</p>
+      <p class="code"><span data-i18n="stay_code">Discount code</span><b id="hotelcode"></b></p>
+      <a class="btn gold" id="hotelbtn" target="_blank" rel="noopener" data-i18n="stay_btn">Book at Hotel La Laguna</a>
     </div>
   </div>
 </section>
@@ -346,6 +363,10 @@ const CONFIG = {
   formEndpoint: 'https://script.google.com/macros/s/AKfycbwVN5NZob-BNzDpPLF9RMAWi4q-HGvCxezl1zTO3HLLxzj6Mg8c5HPYmEXSi7lablAVCQ/exec',                            // paste your Google Apps Script web app URL here (ends in /exec), or a Formspree/Web3Forms URL
   spotifyPlaylistId: '5F0SO7Imi5hgvjWg7wgaKr', // the ID from open.spotify.com/playlist/<ID>
   spotifyLink: 'https://open.spotify.com/playlist/5F0SO7Imi5hgvjWg7wgaKr?si=2b83f19bd6314712', // swap for the "Invite collaborators" link so guests can add songs
+  hotelUrl: 'https://www.hotellalaguna.com/',
+  hotelCode: 'CODE',                           // REPLACE with the 10% discount code
+  busTicketsUrl: 'https://costazul.net/en/purchase-ticket-alicante-elche-airport/',
+  busStationUrl: 'https://torrevieja.es/en/other-places-of-interest/torrevieja-bus-station',
   venueName: { en: 'Spain', es: 'España' }
 };
 
@@ -359,10 +380,12 @@ en:{
  s2_t:'Ceremony',s2_p:'Short and sweet. Tissues optional, but we make no promises.',
  s3_t:'Dinner',s3_p:'Great food, a long table.',
  s4_t:'Party!',s4_p:'The real reason we invited you. Bring comfy shoes.',
- where_title:'Getting there',where_sub:'Finding us is the easy part',open_maps:'Open in Google Maps',
- tip1_t:'Public transport',tip1_p:'Add nearest station, line and walking time here.',
- tip2_t:'By car',tip2_p:'Add parking info here.',
- tip3_t:'Taxi / ride share',tip3_p:'Add the address to show the driver and a rough fare.',
+ where_title:'Getting there',where_sub:"A little trek, but we promise it's worth it",open_maps:'Open in Google Maps',
+ travel_intro:'The closest airport is Alicante–Elche (ALC), about 35–40 minutes away by car. The closest town is Torrevieja.',
+ tip1_t:'Public transport',tip1_p:"Buses only go as far as Torrevieja. From there you'll need a taxi or Uber to the hotel, and the same on the way back.",
+ lnk_tickets:'Airport ⇄ Torrevieja bus tickets',lnk_station:'Torrevieja bus station',
+ stay_t:'Stay with us',stay_p:"We recommend staying at the hotel for two nights, the 10th and 11th of September. Book directly on the hotel's website and use the code below to get 10% off your room.",stay_code:'Discount code',stay_btn:'Book at Hotel La Laguna',
+ tip2_t:'Rent a car',tip2_p:"Our top tip. It's the easiest way to get from the airport to the hotel, and handy if you want to explore the area.",
  dress_q:'What should I wear?',dress_p:"Come as you wish, with a touch of elegance. Think relaxed and polished: flowy dresses, linen, a good shirt or a light blazer. Above all, be comfy, because we'll be dancing all night. And bring something warm for the evening.",
  rsvp_title:'RSVP',rsvp_sub:'Please reply by',
  f_name:'Your full name',f_plus:"I'm bringing a +1",f_plus_name:"Full name of your +1",f_attend:'Will you be there?',f_yes:"Wouldn't miss it",f_no:"Sadly can't make it",
@@ -388,11 +411,13 @@ es:{
  s1_t:'Cóctel de bienvenida',s1_p:'Llegas, te sirves algo de beber y abrazas a todos los que hace demasiado que no ves.',
  s2_t:'Ceremonia',s2_p:'Corta y bonita. Los pañuelos son opcionales, pero no prometemos nada.',
  s3_t:'Cena',s3_p:'Buena comida, mesa larga.',
- s4_t:'Fiesta!',s4_p:'La verdadera razón por la que los invitamos. Traigan zapatos cómodos.',
- where_title:'Cómo llegar',where_sub:'Encontrarnos es lo fácil',open_maps:'Abrir en Google Maps',
- tip1_t:'Transporte público',tip1_p:'Añade aquí la estación más cercana, la línea y el tiempo a pie.',
- tip2_t:'En coche',tip2_p:'Añade aquí la información de aparcamiento.',
- tip3_t:'Taxi / app de transporte',tip3_p:'Añade aquí la dirección para mostrar al conductor y una tarifa aproximada.',
+ s4_t:'¡Fiesta!',s4_p:'La verdadera razón por la que los invitamos. Traigan zapatos cómodos.',
+ where_title:'Cómo llegar',where_sub:'Hay que viajar un poquito, pero prometemos que vale la pena',open_maps:'Abrir en Google Maps',
+ travel_intro:'El aeropuerto más cercano es Alicante–Elche (ALC), a unos 35–40 minutos en coche. La ciudad más cercana es Torrevieja.',
+ tip1_t:'Transporte público',tip1_p:'Los autobuses solo llegan hasta Torrevieja. Desde allí necesitarán un taxi o Uber hasta el hotel, y lo mismo a la vuelta.',
+ lnk_tickets:'Billetes de bus aeropuerto ⇄ Torrevieja',lnk_station:'Estación de autobuses de Torrevieja',
+ stay_t:'Quédense con nosotros',stay_p:'Les recomendamos alojarse en el hotel dos noches, el 10 y el 11 de septiembre. Reserven directamente en la web del hotel y usen el código de abajo para obtener un 10% de descuento en la habitación.',stay_code:'Código de descuento',stay_btn:'Reservar en Hotel La Laguna',
+ tip2_t:'Alquilen un coche',tip2_p:'Nuestro mejor consejo. Es la forma más fácil de ir del aeropuerto al hotel, y muy útil si quieren recorrer la zona.',
  dress_q:'¿Qué me pongo?',dress_p:'Vengan como quieran, con un toque de elegancia. Algo relajado pero cuidado: vestidos fluidos, lino, una buena camisa o un blazer ligero. Lo más importante es estar cómodos, porque vamos a bailar toda la noche. Y traigan algo de abrigo para la noche.',
  rsvp_title:'Confirmar asistencia',rsvp_sub:'Por favor responde antes del',
  f_name:'Tu nombre completo',f_plus:'Voy con un +1',f_plus_name:'Nombre completo de tu +1',f_attend:'¿Vas a venir?',f_yes:'No me lo pierdo',f_no:'Lamentablemente no puedo',
@@ -430,7 +455,6 @@ function applyLang(){
   document.getElementById('deadline-txt2').textContent = dl;
   document.getElementById('lang').textContent = lang==='en' ? 'ES' : 'EN';
   buildSpotify();
-  tick();
 }
 document.getElementById('lang').addEventListener('click',()=>{
   lang = lang==='en'?'es':'en';
@@ -446,6 +470,10 @@ links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.clas
 /* ========= MAP ========= */
 document.getElementById('map').src = 'https://www.google.com/maps?q='+encodeURIComponent(CONFIG.mapQuery)+'&output=embed';
 document.getElementById('mapbtn').href = CONFIG.mapsLink;
+document.getElementById('lnk-tickets').href = CONFIG.busTicketsUrl;
+document.getElementById('lnk-station').href = CONFIG.busStationUrl;
+document.getElementById('hotelbtn').href = CONFIG.hotelUrl;
+document.getElementById('hotelcode').textContent = CONFIG.hotelCode;
 
 /* ========= SPOTIFY ========= */
 function buildSpotify(){
